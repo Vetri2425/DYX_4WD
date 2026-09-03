@@ -4,7 +4,7 @@
   <name>dyx_system_gateway</name>
   <version>0.0.0</version>
   <description>The single ROS-to-backend boundary: validates backend commands into ROS calls, and canonicalizes ROS telemetry back to the backend.</description>
-  <maintainer email="vetri@dyx">Vetri</maintainer>
+  <maintainer email="vetri96muruga@gmail.com">Vetri</maintainer>
   <license>Proprietary</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>

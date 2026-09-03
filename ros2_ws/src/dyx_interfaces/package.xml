@@ -4,7 +4,7 @@
   <name>dyx_interfaces</name>
   <version>0.0.0</version>
   <description>Shared ROS messages, services, and actions for the DYX 4WD production graph.</description>
-  <maintainer email="vetri@dyx">Vetri</maintainer>
+  <maintainer email="vetri96muruga@gmail.com">Vetri</maintainer>
   <license>Proprietary</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>

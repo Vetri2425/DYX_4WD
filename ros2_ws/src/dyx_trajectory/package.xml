@@ -4,7 +4,7 @@
   <name>dyx_trajectory</name>
   <version>0.0.0</version>
   <description>Owns path geometry: target ingestion, segment construction, and path generation for the active mission.</description>
-  <maintainer email="vetri@dyx">Vetri</maintainer>
+  <maintainer email="vetri96muruga@gmail.com">Vetri</maintainer>
   <license>Proprietary</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>

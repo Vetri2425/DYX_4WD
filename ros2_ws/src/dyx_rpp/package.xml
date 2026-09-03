@@ -4,7 +4,7 @@
   <name>dyx_rpp</name>
   <version>0.0.0</version>
   <description>Owns path-following intelligence: tracking error, heading/yaw-rate/speed control, pivot, terminal approach, and stop certification.</description>
-  <maintainer email="vetri@dyx">Vetri</maintainer>
+  <maintainer email="vetri96muruga@gmail.com">Vetri</maintainer>
   <license>Proprietary</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>

@@ -4,7 +4,7 @@
   <name>dyx_rtk</name>
   <version>0.0.0</version>
   <description>Owns RTK correction delivery: NTRIP, GGA, RTCM parsing/validation, and PX4 RTCM injection.</description>
-  <maintainer email="vetri@dyx">Vetri</maintainer>
+  <maintainer email="vetri96muruga@gmail.com">Vetri</maintainer>
   <license>Proprietary</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
