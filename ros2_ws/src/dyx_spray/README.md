@@ -10,6 +10,8 @@
 
 ## Must not
 
+> DERIVED — NOT FROM V1 SPEC: Section 17 has no explicit "must not" list. Inferred from Section 17 ("Mission Manager requests marking. Spray Controller owns actuator execution") and Section 29.
+
 - decide when to mark -- Mission Manager requests marking, Spray only executes it (Section 17)
 - calculate path or steering
 

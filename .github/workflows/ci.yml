@@ -7,11 +7,12 @@ name: CI
 
 on:
   pull_request:
+  push:
 
 jobs:
   ros2_build_test:
     name: colcon build + test (ROS 2 Humble)
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04-arm
     container:
       image: ros:humble-ros-base
     steps:

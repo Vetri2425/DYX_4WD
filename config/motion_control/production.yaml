@@ -13,11 +13,11 @@
 
 /**:
   ros__parameters:
-    # Judgement call: Section 31 lists 6 names for dyx_motion_control; Section 32 does not give a motion_control-specific example list. max_speed/max_yaw_rate/max_acceleration/max_deceleration are classified LIVE (they match Section 32's "speed limits, yaw-rate limits" LIVE examples). command_timeout/telemetry_timeout are classified RESTART_REQUIRED as a judgement call -- they read more like infrastructure/watchdog config than operator tuning, but the document does not say so explicitly. Flagged.
+    # DERIVED — NOT FROM V1 SPEC: Section 31 lists 6 names for dyx_motion_control; Section 32 does not give a motion_control-specific example list. max_speed/max_yaw_rate/max_acceleration/max_deceleration are classified LIVE (matching Section 32's "speed limits, yaw-rate limits" LIVE examples). command_timeout/telemetry_timeout are runtime safety/watchdog limits, not infrastructure configuration, so they are classified IDLE_ONLY per Section 32 ("some safety limits") and ADR-0009.
     # max_speed: ~   # LIVE
     # max_yaw_rate: ~   # LIVE
     # max_acceleration: ~   # LIVE
     # max_deceleration: ~   # LIVE
-    # command_timeout: ~   # RESTART_REQUIRED
-    # telemetry_timeout: ~   # RESTART_REQUIRED
+    # command_timeout: ~   # IDLE_ONLY
+    # telemetry_timeout: ~   # IDLE_ONLY
 

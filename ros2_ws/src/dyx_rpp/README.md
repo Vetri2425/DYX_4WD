@@ -6,9 +6,9 @@
 
 (architecture doc: `docs/architecture/DYX_4WD_Production_Stack_Architecture_V1.md`)
 
-> Judgement call: Section 9 does not contain an explicit "RPP must not" list (unlike trajectory/mission/motion_control). This list is derived from Section 14 ("PX4 owns") and Section 10 (control ownership split) -- flagged as a judgement call.
-
 ## Must not
+
+> DERIVED — NOT FROM V1 SPEC: Section 9 does not contain an explicit "RPP must not" list (unlike trajectory/mission/motion_control). This list is derived from Section 14 ("PX4 owns") and Section 10 (control ownership split).
 
 - perform state estimation (Section 14: PX4 owns EKF/attitude/position estimation)
 - close the inner speed or yaw-rate control loop (Section 14: PX4 owns inner control)
