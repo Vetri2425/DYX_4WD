@@ -1,0 +1,28 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "dyx-backend"
+version = "0.0.0"
+description = "DYX 4WD production backend: REST + Socket.IO, auth, mission, telemetry, RTK config, storage. Never depends on the ROS2 Python client library -- reaches ROS only through dyx_system_gateway (Section 4)."
+requires-python = ">=3.10"
+license = { text = "Proprietary" }
+authors = [{ name = "Vetri", email = "vetri@dyx" }]
+dependencies = [
+    "fastapi>=0.110",
+    "uvicorn[standard]>=0.29",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.4",
+    "httpx>=0.27",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/dyx_backend"]
+
+[tool.ruff]
+line-length = 100

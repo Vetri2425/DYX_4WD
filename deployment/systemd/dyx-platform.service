@@ -1,0 +1,13 @@
+[Unit]
+Description=DYX 4WD Platform (network, PX4 Ethernet readiness, XRCE-DDS Agent, runtime dirs, permissions)
+# Section 21, Service 1: starts first. No dependency on other dyx- services.
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/opt/dyx/current/deployment/scripts/start-platform.sh
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

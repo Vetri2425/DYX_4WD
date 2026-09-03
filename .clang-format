@@ -1,0 +1,9 @@
+# DYX 4WD clang-format baseline (Milestone 1).
+# Based on Google style with a wider column limit for readability in
+# controller math. Revisit once real C++ sources land in ros2_ws/src.
+BasedOnStyle: Google
+ColumnLimit: 100
+IndentWidth: 2
+AccessModifierOffset: -2
+PointerAlignment: Left
+SortIncludes: true

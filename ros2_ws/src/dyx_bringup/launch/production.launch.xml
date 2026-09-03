@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!--
+  dyx_bringup / production.launch.xml
+
+  Full production ROS graph: Trajectory, Mission, RPP, Motion Control, PX4 Gateway, System Gateway, RTK, Spray (Section 21, Service 2).
+
+  TODO: Milestone 1 skeleton only. No nodes are launched yet.
+  Runtime parameters must come from config/, never be hard-coded here (Section 20).
+-->
+<launch>
+</launch>

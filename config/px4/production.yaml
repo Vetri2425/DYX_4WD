@@ -1,0 +1,21 @@
+# dyx_px4_gateway production parameters
+#
+# Skeleton only -- Milestone 1. Values are intentionally left commented out;
+# do not invent tuning numbers (per task instructions). Names below come
+# directly from the architecture document where it enumerates them.
+#
+# Classes (Section 32):
+#   LIVE             -- safe to change while the rover is running, applies immediately
+#   IDLE_ONLY        -- changeable without ROS restart, but only outside an active mission
+#   RESTART_REQUIRED -- infrastructure; requires a ROS restart to take effect
+#
+# ros2 param set /<node> <name> <value>   (Section 38) -- once implemented.
+
+/**:
+  ros__parameters:
+    # Judgement call: Section 32's RESTART_REQUIRED example list is generic ("PX4 IP address, DDS transport configuration, network interface, ROS domain ID, backend port, filesystem locations") rather than scoped per-package. The PX4-transport-relevant subset is placed here as a judgement call; backend port and filesystem locations are not px4_gateway's concern.
+    # px4_ip_address: ~   # RESTART_REQUIRED
+    # dds_transport_config: ~   # RESTART_REQUIRED
+    # network_interface: ~   # RESTART_REQUIRED
+    # ros_domain_id: ~   # RESTART_REQUIRED
+

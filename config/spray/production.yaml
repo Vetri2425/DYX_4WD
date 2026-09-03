@@ -1,0 +1,19 @@
+# dyx_spray production parameters
+#
+# Skeleton only -- Milestone 1. Values are intentionally left commented out;
+# do not invent tuning numbers (per task instructions). Names below come
+# directly from the architecture document where it enumerates them.
+#
+# Classes (Section 32):
+#   LIVE             -- safe to change while the rover is running, applies immediately
+#   IDLE_ONLY        -- changeable without ROS restart, but only outside an active mission
+#   RESTART_REQUIRED -- infrastructure; requires a ROS restart to take effect
+#
+# ros2 param set /<node> <name> <value>   (Section 38) -- once implemented.
+
+/**:
+  ros__parameters:
+  # Section 31 does not enumerate parameter names for dyx_spray.
+  # No names are invented here -- to be defined during this package's
+  # implementation phase (see docs/architecture section 31/56).
+

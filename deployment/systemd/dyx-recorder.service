@@ -1,0 +1,15 @@
+[Unit]
+Description=DYX 4WD Recorder (field evidence, independent of backend)
+# Section 21, Service 4: runs independently from backend and control logic;
+# must keep recording even if dyx-backend fails. Depends on platform/ROS only,
+# deliberately has no dependency on dyx-backend.
+After=dyx-platform.service dyx-ros.service
+Requires=dyx-platform.service dyx-ros.service
+
+[Service]
+Type=simple
+ExecStart=/opt/dyx/current/deployment/scripts/start-recorder.sh
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

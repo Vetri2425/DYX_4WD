@@ -1,0 +1,13 @@
+[Unit]
+Description=DYX 4WD ROS2 Production Graph (dyx_bringup production.launch.xml)
+# Section 21, Service 2: the real rover control service. Depends on platform.
+After=dyx-platform.service
+Requires=dyx-platform.service
+
+[Service]
+Type=simple
+ExecStart=/opt/dyx/current/deployment/scripts/start-ros.sh
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

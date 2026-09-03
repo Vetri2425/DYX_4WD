@@ -1,0 +1,108 @@
+name: CI
+
+# Section 26: every pull request runs colcon build + test, clang-format check,
+# backend unit tests, and repo hygiene (reject backups/large bags/secrets/build dirs).
+# clang-tidy and interface-compatibility checks are not wired yet -- Milestone 1
+# skeleton has no C++ sources and no frozen interfaces to check against (Section 55/56).
+
+on:
+  pull_request:
+
+jobs:
+  ros2_build_test:
+    name: colcon build + test (ROS 2 Humble)
+    runs-on: ubuntu-22.04
+    container:
+      image: ros:humble-ros-base
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: colcon build
+        shell: bash
+        run: |
+          source /opt/ros/humble/setup.bash
+          cd ros2_ws
+          colcon build --symlink-install
+
+      - name: colcon test
+        shell: bash
+        run: |
+          source /opt/ros/humble/setup.bash
+          cd ros2_ws
+          colcon test
+          colcon test-result --verbose
+
+  clang_format:
+    name: clang-format check
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install clang-format
+        run: sudo apt-get update && sudo apt-get install -y clang-format
+
+      - name: clang-format --dry-run --Werror
+        run: |
+          find ros2_ws/src -type f \( -name '*.cpp' -o -name '*.hpp' -o -name '*.h' \) \
+            -print0 | xargs -0 -r clang-format --dry-run --Werror
+
+  backend_checks:
+    name: backend (ruff + pytest)
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install backend + dev deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e "backend[dev]"
+
+      - name: ruff
+        run: ruff check backend/src backend/tests
+
+      - name: pytest
+        run: pytest backend/tests
+
+  repo_hygiene:
+    name: repo hygiene
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Reject backup files, bag/mcap artifacts, oversized files, build dirs
+        run: |
+          set -euo pipefail
+          fail=0
+
+          echo "Checking for backup-style files..."
+          if git ls-files | grep -E '(\.backup$|\.bak$|\.before_.*)'; then
+            echo "::error::Backup-style files are not allowed (Section 3, 26)."
+            fail=1
+          fi
+
+          echo "Checking for tracked bag/db/mcap files..."
+          if git ls-files | grep -E '\.(db3|mcap)$'; then
+            echo "::error::Bag/database files must not be committed (Section 3, 26)."
+            fail=1
+          fi
+
+          echo "Checking for tracked build/install/log directories..."
+          if git ls-files | grep -E '(^|/)(build|install|log)/'; then
+            echo "::error::Generated build/install/log directories must not be committed (Section 26)."
+            fail=1
+          fi
+
+          echo "Checking for files over 5MB..."
+          while IFS= read -r -d '' f; do
+            size=$(stat -c%s "$f" 2>/dev/null || stat -f%z "$f")
+            if [ "$size" -gt 5242880 ]; then
+              echo "::error::$f is over 5MB ($size bytes) (Section 26)."
+              fail=1
+            fi
+          done < <(git ls-files -z)
+
+          exit "$fail"

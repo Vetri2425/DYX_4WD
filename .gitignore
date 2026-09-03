@@ -1,0 +1,28 @@
+# Build artifacts
+build/
+install/
+log/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+
+# Runtime / field data (Section 3: no bag files, no logs, no runtime-generated
+# mission files committed)
+runs/
+bags/
+*.db3
+*.mcap
+
+# Secrets / environment
+*.env
+
+# Backup files (Section 3, 26: no .backup/.bak/.before_* files, no tracked backups)
+*.backup
+*.bak
+*.before_*
+
+# OS cruft
+.DS_Store

@@ -1,0 +1,15 @@
+[Unit]
+Description=DYX 4WD Backend (FastAPI + Socket.IO)
+# Section 21, Service 3: depends on platform and ROS availability, but the
+# ROS control system must remain safe even if this service crashes -- this
+# service depends on dyx-ros, never the reverse.
+After=dyx-platform.service dyx-ros.service
+Requires=dyx-platform.service dyx-ros.service
+
+[Service]
+Type=simple
+ExecStart=/opt/dyx/current/deployment/scripts/start-backend.sh
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
