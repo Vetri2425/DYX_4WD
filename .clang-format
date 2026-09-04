@@ -1,6 +1,11 @@
 # DYX 4WD clang-format baseline (Milestone 1).
 # Based on Google style with a wider column limit for readability in
 # controller math. Revisit once real C++ sources land in ros2_ws/src.
+#
+# PINNED TOOL VERSION: clang-format 20.1.8 (CI installs the PyPI wheel).
+# Match it locally:  pip install clang-format==20.1.8
+# Google style definitions shift between LLVM releases -- a different
+# local version can reformat code CI considers already clean.
 BasedOnStyle: Google
 ColumnLimit: 100
 IndentWidth: 2
