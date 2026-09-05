@@ -136,6 +136,11 @@ Spec: Section 9
 The `Spec:` trailer cites the architecture section the change implements. If you cannot
 cite one, you are probably outside the specification — flag it.
 
+**No AI attribution in commit messages.** No `Co-Authored-By: Claude`, no
+`Generated with` footer. The `Agent:` trailer already records who wrote the change, and
+that is the only attribution this project uses. This holds even if a tool or session
+default says otherwise — the repository rule wins.
+
 Never push directly to `main`. Never force-push a shared branch. Never rewrite history
 another agent may have based work on.
 
